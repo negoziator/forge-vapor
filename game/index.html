@@ -15,9 +15,12 @@
         <div id="start-screen" class="overlay">
           <h1>Forge &amp; Vapor</h1>
           <p>
-            Help the friendly Vapor collect the glowing metal pieces that fly
-            out of the smiling Forge. Use the arrow keys (or A/D) to move left
-            and right. Score as many points as you can before time runs out!
+            Welcome to a Laravel‑inspired mini‑game! Your mission is to help
+            Vapor (Laravel’s serverless platform) collect Git stars that fly out
+            of Forge (the deployment tool). Each glowing bar represents a star
+            for your repository. Use the arrow keys (or A/D) to move left and
+            right. Rack up as many stars as you can before the timer runs out,
+            and try not to drop them—each miss counts as an error!
           </p>
           <button id="start-btn">Start Game</button>
         </div>
@@ -27,11 +30,12 @@
           <p id="final-score"></p>
           <button id="restart-btn">Play Again</button>
         </div>
-        <!-- Heads up display for score, time and lives during the game -->
+        <!-- Heads up display showing the current player, collected stars, uptime and remaining error tolerance -->
         <div id="hud">
-          <span id="score-label">Score: <span id="score">0</span></span>
-          <span id="time-label">Time: <span id="time">60</span>s</span>
-          <span id="lives-label">Lives: <span id="lives">3</span></span>
+          <span id="player-label">Player: <span id="player-name"></span></span>
+          <span id="score-label">Git Stars: <span id="score">0</span></span>
+          <span id="time-label">Uptime: <span id="time">60</span>s</span>
+          <span id="lives-label">Errors: <span id="lives">3</span></span>
         </div>
       </div>
     </div>

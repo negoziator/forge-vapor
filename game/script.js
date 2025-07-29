@@ -16,6 +16,24 @@ const finalScoreEl = document.getElementById('final-score');
 const scoreEl = document.getElementById('score');
 const timeEl = document.getElementById('time');
 const livesEl = document.getElementById('lives');
+const playerNameEl = document.getElementById('player-name');
+
+// Possible Laravel‑related player names. These are all inspired by official tools or
+// famous concepts from the Laravel ecosystem.
+const PLAYER_NAMES = [
+  'Taylor',    // after Taylor Otwell, creator of Laravel
+  'Artisan',   // Laravel’s CLI tool
+  'Lambo',     // a tool for rapid Laravel project creation
+  'Eloquent',  // the ORM
+  'Nova',      // administration panel
+  'Sail',      // Docker environment
+  'Jetstream', // application starter kit
+  'Breeze',    // lightweight auth scaffolding
+  'Valet'      // local development environment
+];
+
+// Currently selected player name
+let currentPlayerName = '';
 
 // Load images
 const forgeImg = new Image();
@@ -77,6 +95,9 @@ function startGame() {
   lastSpawn = 0;
   lastTime = performance.now();
   player.x = canvas.width / 2 - PLAYER_WIDTH / 2;
+  // Pick a random name for this session
+  currentPlayerName = PLAYER_NAMES[Math.floor(Math.random() * PLAYER_NAMES.length)];
+  playerNameEl.textContent = currentPlayerName;
   // Update UI
   scoreEl.textContent = score;
   timeEl.textContent = timeLeft;
@@ -211,8 +232,8 @@ function spawnBar() {
  */
 function endGame() {
   gameRunning = false;
-  // Construct an English summary of the score. Include pluralisation.
-  const pointLabel = score === 1 ? 'point' : 'points';
-  finalScoreEl.textContent = `You scored ${score} ${pointLabel}!`;
+  // Construct a summary of the collected git stars with pluralisation.
+  const starLabel = score === 1 ? 'git star' : 'git stars';
+  finalScoreEl.textContent = `You collected ${score} ${starLabel}!`;
   gameOverScreen.classList.remove('hidden');
 }
