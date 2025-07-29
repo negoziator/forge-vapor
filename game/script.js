@@ -80,9 +80,10 @@ helpScreen.addEventListener('click', (e) => {
 
 // Configuration for phpstan bullets
 const bullets = [];
-const BULLET_WIDTH = 12;
-const BULLET_HEIGHT = 12;
-const BULLET_SPEED = 8;
+// Scale bullet dimensions and speed up for the larger canvas (1.25×)
+const BULLET_WIDTH = 15;
+const BULLET_HEIGHT = 15;
+const BULLET_SPEED = 10;
 
 // Probability that a falling bar is "bad". Bad bars grant an extra life when
 // shot with a phpstan bullet, but will consume a life if caught by the player.
@@ -194,11 +195,14 @@ vaporImg.src = 'vapor.jpg';
 // Game constants
 const GAME_DURATION = 60; // seconds
 const BAR_SPAWN_INTERVAL = 1000; // base spawn interval in ms
-const PLAYER_WIDTH = 72;
-const PLAYER_HEIGHT = 90;
-const PLAYER_SPEED = 6;
-const BAR_WIDTH = 40;
-const BAR_HEIGHT = 16;
+// Player dimensions scaled for the larger canvas (approximately 1.25×). Speed
+// is also increased to keep movement responsive relative to the new canvas size.
+const PLAYER_WIDTH = 90;
+const PLAYER_HEIGHT = 112;
+const PLAYER_SPEED = 8;
+// Bar dimensions scaled up for improved visibility
+const BAR_WIDTH = 50;
+const BAR_HEIGHT = 20;
 const INITIAL_LIVES = 3;
 
 // Game state variables
