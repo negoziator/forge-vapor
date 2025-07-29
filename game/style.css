@@ -56,6 +56,8 @@ body {
   text-align: center;
   padding: 20px;
   box-sizing: border-box;
+  /* Allow overlays to capture clicks despite parent pointer-events none */
+  pointer-events: auto;
 }
 
 /* Hidden class toggles overlays off */

@@ -17,18 +17,51 @@
           <p>
             Welcome to a Laravel‑inspired mini‑game! Your mission is to help
             Vapor (Laravel’s serverless platform) collect Git stars that fly out
-            of Forge (the deployment tool). Each glowing bar represents a star
-            for your repository. Use the arrow keys (or A/D) to move left and
-            right. Rack up as many stars as you can before the timer runs out,
-            and try not to drop them—each miss counts as an error!
+            of Forge (the deployment tool). Each falling bar can be either
+            <em>good</em> or <em>bad</em>: the good ones are coloured red and marked with a
+            plus symbol (+), while the bad ones are green and marked with a
+            cross (×). Catch the plus bars to earn Git stars for your repository,
+            and shoot the cross bars to avoid losing errors and even gain extra
+            ones. Use your mouse (or the arrow keys A/D) to move left and right,
+            and click or press space to fire PHPStan projectiles. Rack up as
+            many stars as you can before the timer runs out.
           </p>
           <button id="start-btn">Start Game</button>
+          <button id="help-btn" style="margin-top: 10px;">Help &amp; Settings</button>
+          <!-- High scores list will be injected here from localStorage -->
+          <div id="high-scores-container" style="margin-top: 20px; text-align:left; max-width: 400px;">
+            <h3>High Scores</h3>
+            <ol id="high-scores-list" style="padding-left: 20px;"></ol>
+          </div>
         </div>
         <!-- Game over screen shown when time expires or no lives remain -->
         <div id="game-over-screen" class="overlay hidden">
-          <h1>Game Over!</h1>
+          <h1 id="game-over-heading">Game Over!</h1>
           <p id="final-score"></p>
           <button id="restart-btn">Play Again</button>
+        </div>
+
+        <!-- Help screen explaining controls and game mechanics -->
+        <div id="help-screen" class="overlay hidden">
+          <h1>Help &amp; Settings</h1>
+          <p style="max-width: 500px; text-align:left;">
+            <strong>Objective:</strong> Collect as many Git stars as possible by catching
+            the good bars. Good bars are coloured red and marked with a plus
+            symbol. Reach the target number of stars to win the game. Avoid
+            dropping bars—each miss consumes one of your errors.
+          </p>
+          <p style="max-width: 500px; text-align:left;">
+            <strong>Controls:</strong> Move the player with your mouse. Click (or
+            press the spacebar) to fire a PHPStan projectile. Bars with a
+            <strong>+</strong> icon are good—catch these to earn Git stars. Bars with a
+            <strong>×</strong> icon are bad—if you catch one, you lose an error. Shoot
+            them instead to gain an extra error!
+          </p>
+          <p style="max-width: 500px; text-align:left;">
+            <strong>Levels:</strong> The game becomes more challenging as you collect
+            more stars. Keep an eye on your level in the HUD.
+          </p>
+          <button id="close-help-btn">Back</button>
         </div>
         <!-- Heads up display showing the current player, collected stars, uptime and remaining error tolerance -->
         <div id="hud">
@@ -36,6 +69,7 @@
           <span id="score-label">Git Stars: <span id="score">0</span></span>
           <span id="time-label">Uptime: <span id="time">60</span>s</span>
           <span id="lives-label">Errors: <span id="lives">3</span></span>
+          <span id="level-label">Level: <span id="level">1</span></span>
         </div>
       </div>
     </div>
