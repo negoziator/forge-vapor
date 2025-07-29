@@ -1,0 +1,99 @@
+/*
+ * Stylesheet for the Forge & Vapor mini‑game.
+ * This file controls the layout of the game container, canvas,
+ * overlays (start/game‑over screens) and HUD. The aesthetic is
+ * intentionally simple and playful to match the supplied artwork.
+ */
+
+/* Reset default margin and set up a pleasant background */
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  background-color: #f7f9fb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Container that holds the canvas and overlays */
+#game-container {
+  position: relative;
+  border: 4px solid #2c3e50;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* The canvas takes up the full size of the container */
+#gameCanvas {
+  display: block;
+  background-color: #222; /* fallback while images load */
+}
+
+/* UI wrapper sits on top of the canvas to capture all overlay content */
+#ui {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* allow clicks to pass through when playing */
+}
+
+/* Base styles for overlays (start and game over screens) */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Hidden class toggles overlays off */
+.hidden {
+  display: none;
+}
+
+/* Heads up display for score, time and lives */
+#hud {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 18px;
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 6px 10px;
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+#hud span {
+  margin-right: 20px;
+}
+
+/* Buttons share a consistent look */
+button {
+  padding: 10px 24px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  background: #27ae60;
+  color: #ffffff;
+  margin-top: 20px;
+  pointer-events: auto; /* enable clicking on overlays */
+  transition: background 0.2s ease;
+}
+
+button:hover {
+  background: #1e8449;
+}

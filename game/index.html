@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Forge &amp; Vapor Game</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="game-container">
+      <!-- The canvas is where the game is rendered -->
+      <canvas id="gameCanvas" width="800" height="600"></canvas>
+      <!-- UI overlay holds the start screen, HUD and game‑over screen -->
+      <div id="ui">
+        <!-- Start screen shown before the game begins -->
+        <div id="start-screen" class="overlay">
+          <h1>Forge &amp; Vapor</h1>
+          <p>
+            Help the friendly Vapor collect the glowing metal pieces that fly
+            out of the smiling Forge. Use the arrow keys (or A/D) to move left
+            and right. Score as many points as you can before time runs out!
+          </p>
+          <button id="start-btn">Start Game</button>
+        </div>
+        <!-- Game over screen shown when time expires or no lives remain -->
+        <div id="game-over-screen" class="overlay hidden">
+          <h1>Game Over!</h1>
+          <p id="final-score"></p>
+          <button id="restart-btn">Play Again</button>
+        </div>
+        <!-- Heads up display for score, time and lives during the game -->
+        <div id="hud">
+          <span id="score-label">Score: <span id="score">0</span></span>
+          <span id="time-label">Time: <span id="time">60</span>s</span>
+          <span id="lives-label">Lives: <span id="lives">3</span></span>
+        </div>
+      </div>
+    </div>
+    <!-- Game logic lives in script.js -->
+    <script src="script.js"></script>
+  </body>
+</html>
